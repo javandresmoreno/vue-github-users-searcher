@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/main.css">
+    <script src="https://unpkg.com/vue@3"></script>
+    <title>Github Search Project</title>
+</head>
+<body>
+    <div id="app">
+        <!-- Favoritos -->
+        <div class="favorites"></div>
+
+        <!-- Contenido -->
+        <h3 class="title">{{ message }}</h3>
+        <article class="content">
+            <h1 class="content-title">Search GitHub</h1>
+
+            <!-- Búsqueda -->
+            <form action="" class="search">
+                <input type="text" class="search-input" placeholder="Type who you want to find ..." required>
+                <input type="submit" class="search-submit" placeholder="Search">
+            </form>
+
+            <!-- Resultado -->
+            <!-- Error -->
+            <div class="result-error"></div>
+        </article>
+    </div>
+    <script src="./assets/js/main.js"></script>
+    <script>
+        const mountedApp = app.mount("#app")
+    </script>
+</body>
+</html>

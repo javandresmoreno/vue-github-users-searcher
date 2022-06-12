@@ -1,0 +1,179 @@
+/* General */
+:root {
+  --card-box-shadow: -1px 5px 27px -6px rgba(0,0,0,0.32);
+}
+
+* {
+    box-sizing: border-box;
+  }
+  
+  html,
+  body {
+    height: 100%;
+  }
+  
+  body {
+    font-family: 'system-ui', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: darkslateblue;
+    font-size: 1.3rem;
+  }
+  
+  /* Content */
+  .content {
+    background-color: white;
+    width: 768px;
+    max-width: 768px;
+    padding: 3rem;
+    box-shadow: var(--card-box-shadow);
+    border-radius: 1rem;
+  }
+  
+  .content-title {
+    margin: 1rem;
+    text-align: center;
+  }
+  
+  /* Search */
+  .search {
+    display: flex;
+    margin-bottom: 2.5rem;
+  }
+  
+  .search-input {
+    flex: 1;
+    padding: 1rem;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid lightgray;
+  }
+
+  .search-submit {
+    background-color: darkslateblue;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    margin-inline-start: .5rem;
+    padding-inline: 1rem;
+    font-family: 'system-ui', sans-serif;
+    font-weight: 600;
+    letter-spacing: .1rem;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+  .search-submit:hover {
+    background-color: slateblue;
+    box-shadow: var(--card-box-shadow);
+  }
+  
+  /* Result */
+  .result {
+    position: relative;
+    background-color: purple;
+    border-radius: 0.3rem;
+    box-shadow: var(--card-box-shadow);
+    color: white;
+    padding: 2.5rem;
+    display: grid;
+    gap: 1rem;
+    grid-template-areas:
+      "name name"
+      "avatar bio";
+  }
+  
+  .result-toggle__favorite {
+    position: absolute;
+    top: 0.3rem;
+    right: 0.3rem;
+    border: none;
+    color: white;
+    text-decoration: none;
+    padding: 0.4rem;
+  }
+  
+  .result-name {
+    grid-area: name;
+    margin: 0.4rem 0;
+  }
+  
+  .result-avatar {
+    grid-area: avatar;
+    max-width: 6rem;
+    height: auto;
+    border-radius: 1rem;
+  }
+  
+  .result-bio {
+    grid-area: bio;
+    margin: 0;
+  }
+  
+  .result-blog {
+    grid-area: blog;
+    color: goldenrod;
+  }
+  
+  .result-error {
+    padding: 0.1rem;
+    background-color: tomato;
+    color: white;
+    text-align: center;
+  }
+  
+  /* Favorites */
+  .favorites {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+  }
+  
+  .favorite {
+    transition: transform 0.3s ease-out;
+  }
+  
+  .favorite-avatar {
+    height: 5rem;
+    margin: 0.3rem;
+  }
+  
+  .favorite-selected {
+    transform: scale(1.3);
+  }
+  
+  /* Transitions */
+  .v-enter-active,
+  .v-leave-active {
+    transition: opacity 0.5s ease;
+  }
+  
+  .v-enter__from,
+  .v-leave__to {
+    opacity: 0;
+  }
+  
+  .list-move, /* apply transition to moving elements */
+  .list-enter__active,
+  .list-leave__active {
+    transition: all 0.5s ease;
+  }
+  
+  .list-enter__from,
+  .list-leave__to {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  
+  /* ensure leaving items are taken out of layout flow so that moving
+     animations can be calculated correctly. */
+  .list-leave__active {
+    position: absolute;
+  }
+
+  .title {
+    color: rgb(137, 122, 233);
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.4);
+  }
