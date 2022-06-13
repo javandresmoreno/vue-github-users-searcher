@@ -12,12 +12,18 @@ const API = "https://api.github.com/users/";
 const app = Vue.createApp({
     data() {
         return {
-            subtitle: "Juan Nuñez's - VueJS 3 Course",
+            subtitle: `Project Course 💚 escuelavue.es`,
             search: null,
             result: null,
             error: null, 
+            favorites: new Map()
         }
-    }, 
+    },
+    computed: {
+        isFavorite() {
+            return this.favorites.has(this.result.id)
+        }
+    },
     methods: {
         async doSearch() {
             //Con la linea siguiente reseteo mis resultados
@@ -31,13 +37,20 @@ const app = Vue.createApp({
                 const data = await response.json()
                 console.log(data)
 
-                this.result = true
-                
+                this.result = data
+
             } catch (error) {
                 this.error = error
             } finally {
                 this.search = null 
             }
-        }
+        }, 
+        addFavorite() {
+            this.favorites.set(this.result.id, this.result)
+        },
+        removeFavorite() {
+            this.favorites.delete(this.result.id)
+        },
+
     }
 })

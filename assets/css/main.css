@@ -50,6 +50,10 @@
     border: 1px solid lightgray;
   }
 
+  .search-input:focus-within {
+    border: 1px solid lightgreen;
+  }
+
   .search-submit {
     background-color: darkslateblue;
     color: white;
@@ -86,12 +90,18 @@
   
   .result-toggle__favorite {
     position: absolute;
-    top: 0.3rem;
-    right: 0.3rem;
+    top: 1rem;
+    right: 1.2rem;
     border: none;
     color: white;
     text-decoration: none;
     padding: 0.4rem;
+    font-size: .8rem;
+  }
+
+  .result-toggle__favorite:hover {
+    background-color: rgb(173, 21, 173);
+    border-radius: .4rem;
   }
   
   .result-name {

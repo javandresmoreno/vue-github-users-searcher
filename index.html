@@ -11,7 +11,13 @@
 <body>
     <div id="app">
         <!-- Favoritos -->
-        <div class="favorites"></div>
+        <div class="favorites">
+            <div class="favorite" v-for="[, favorite] in favorites">
+                <a href="#">
+                    <img :src="favorite.avatar_url" alt="" class="favorite-avatar">
+                </a>
+            </div>
+        </div>
 
         <!-- Contenido -->
         <h3 class="title">{{ subtitle }}</h3>
@@ -26,16 +32,20 @@
 
             <!-- Resultado -->
             <div class="result" v-if="result">
-                <h2 class="result-name">Javier Andrés Moreno</h2>
-                <img class="result-avatar" src="https://avatars.githubusercontent.com/u/46449488?v=4" alt="Foto de Perfil" title="Avatar de @javandresmoreno">
+                <a v-if="isFavorite" href="#" class="result-toggle__favorite" @click="removeFavorite" >Remove Favorite ⭐</a>
+                <a v-else href="#" class="result-toggle__favorite" @click="addFavorite">Add Favorite ⭐</a>
+                <h2 class="result-name">{{ result.name }}</h2>
+                <img class="result-avatar" v-bind:src="result.avatar_url" :alt="result.name" :title="`Avatar de ${result.name}`">
                 <p class="result-bio">
-                    Frontend Developer at paisuscripciones.com. Stoicism apprentice. VueJS enthusiastic
+                    {{ result.bio }}
                     <br/>
-                    <a href="https://javiermoreno.solido.co" class="result-blog" target="_blank">javiermoreno.solido.co</a>
+                    <small>{{ result.company }}</small>
+                    <br/>
+                    <a :href="result.html_url" class="result-blog" target="_blank">{{ result.html_url }}</a>
                 </p>
-                <a href="https://twitter.com/javandresmoreno" class="result-twitter" target="_blank">@javandresmoreno</a>
+                <a :href="`https://twitter.com/${result.twitter_username}`" class="result-twitter" target="_blank">@{{ result.twitter_username }}</a>
             </div>
-            <p v-else>Waiting for search ... ⌚</p>
+            
             <!-- Error -->
             <div class="result-error" v-show="error">{{ error }}</div>
         </article>
