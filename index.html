@@ -14,19 +14,30 @@
         <div class="favorites"></div>
 
         <!-- Contenido -->
-        <h3 class="title">{{ message }}</h3>
+        <h3 class="title">{{ subtitle }}</h3>
         <article class="content">
             <h1 class="content-title">Search GitHub</h1>
 
             <!-- Búsqueda -->
-            <form action="" class="search">
-                <input type="text" class="search-input" placeholder="Type who you want to find ..." required>
+            <form action="" class="search" v-on:submit.prevent="doSearch()">
+                <input v-model="search" type="text" class="search-input" placeholder="Enter the Github username of the person you want to find ..." required>
                 <input type="submit" class="search-submit" placeholder="Search">
             </form>
 
             <!-- Resultado -->
+            <div class="result" v-if="result">
+                <h2 class="result-name">Javier Andrés Moreno</h2>
+                <img class="result-avatar" src="https://avatars.githubusercontent.com/u/46449488?v=4" alt="Foto de Perfil" title="Avatar de @javandresmoreno">
+                <p class="result-bio">
+                    Frontend Developer at paisuscripciones.com. Stoicism apprentice. VueJS enthusiastic
+                    <br/>
+                    <a href="https://javiermoreno.solido.co" class="result-blog" target="_blank">javiermoreno.solido.co</a>
+                </p>
+                <a href="https://twitter.com/javandresmoreno" class="result-twitter" target="_blank">@javandresmoreno</a>
+            </div>
+            <p v-else>Waiting for search ... ⌚</p>
             <!-- Error -->
-            <div class="result-error"></div>
+            <div class="result-error" v-show="error">{{ error }}</div>
         </article>
     </div>
     <script src="./assets/js/main.js"></script>

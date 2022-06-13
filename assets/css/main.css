@@ -72,10 +72,11 @@
   .result {
     position: relative;
     background-color: purple;
-    border-radius: 0.3rem;
+    border-radius: 1rem;
     box-shadow: var(--card-box-shadow);
     color: white;
-    padding: 2.5rem;
+    padding-block: 1.5rem;
+    padding-inline: 2.5rem;
     display: grid;
     gap: 1rem;
     grid-template-areas:
@@ -95,31 +96,60 @@
   
   .result-name {
     grid-area: name;
-    margin: 0.4rem 0;
+    margin: 0;
   }
   
   .result-avatar {
     grid-area: avatar;
-    max-width: 6rem;
+    max-width: 7rem;
     height: auto;
-    border-radius: 1rem;
+    border-radius: 50%;
   }
   
   .result-bio {
     grid-area: bio;
     margin: 0;
+    font-weight: 300;
   }
-  
+
   .result-blog {
-    grid-area: blog;
+    grid-area: bio;
+    display: inline-block;
     color: goldenrod;
+    margin-block-start: 0.5rem;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  
+  .result-blog:hover {
+    opacity: 0.5;
+  }
+
+  .result-twitter {
+    grid-column-start: span 2;
+    color: white;
+    font-style: italic;
+    font-size: small;
+    text-decoration: none;
+    cursor: pointer;
+    opacity: .8;
+    text-align: right;  
+  }
+
+  .result-twitter:hover {
+    opacity: .5;
   }
   
   .result-error {
-    padding: 0.1rem;
+    padding-inline: 0.2rem;
+    padding-block: 0.8rem;
     background-color: tomato;
     color: white;
     text-align: center;
+    margin-block-start: 1.5rem;
+    border-radius: 5px;
   }
   
   /* Favorites */
