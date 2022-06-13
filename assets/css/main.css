@@ -165,9 +165,8 @@
   /* Favorites */
   .favorites {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
+    top: 1rem;
+    right: 1rem;
     display: flex;
   }
   
@@ -177,7 +176,10 @@
   
   .favorite-avatar {
     height: 5rem;
-    margin: 0.3rem;
+    border-radius: 100%;
+    border: 2px solid slateblue;
+    margin: 0 0 0 -1rem;
+    filter: drop-shadow(3px 3px 6px rgba(0,0,0,0.4));
   }
   
   .favorite-selected {

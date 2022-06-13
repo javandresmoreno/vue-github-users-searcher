@@ -12,9 +12,9 @@
     <div id="app">
         <!-- Favoritos -->
         <div class="favorites">
-            <div class="favorite" v-for="[, favorite] in favorites">
-                <a href="#">
-                    <img :src="favorite.avatar_url" alt="" class="favorite-avatar">
+            <div class="favorite" v-for="favorite in allFavorites">
+                <a href="#" target="_blank" @click.prevent="showFavorite(favorite)">
+                    <img :src="favorite.avatar_url" :alt="favorite.name" :title="favorite.name" class="favorite-avatar">
                 </a>
             </div>
         </div>
@@ -22,7 +22,7 @@
         <!-- Contenido -->
         <h3 class="title">{{ subtitle }}</h3>
         <article class="content">
-            <h1 class="content-title">Search GitHub</h1>
+            <h1 class="content-title">¡Search GitHub Users!</h1>
 
             <!-- Búsqueda -->
             <form action="" class="search" v-on:submit.prevent="doSearch()">
@@ -35,7 +35,7 @@
                 <a v-if="isFavorite" href="#" class="result-toggle__favorite" @click="removeFavorite" >Remove Favorite ⭐</a>
                 <a v-else href="#" class="result-toggle__favorite" @click="addFavorite">Add Favorite ⭐</a>
                 <h2 class="result-name">{{ result.name }}</h2>
-                <img class="result-avatar" v-bind:src="result.avatar_url" :alt="result.name" :title="`Avatar de ${result.name}`">
+                <img class="result-avatar" v-bind:src="result.avatar_url" :alt="result.name" :title="`${result.name} avatar`">
                 <p class="result-bio">
                     {{ result.bio }}
                     <br/>
